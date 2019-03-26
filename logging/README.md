@@ -31,3 +31,4 @@ y -> l
 b -> o
 ```
 
+Characters not found in the map are not en/decrypted, e.g. `CR`, `LF`, `TAB`, special characters like `.`, `!`. That means the basic structure of a source file is retained.
