@@ -43,12 +43,15 @@ A much as possible should be tested automatically. Sample files are provided. Th
 Functions to test:
 
 ```
-void Encrypt(IEnumerable<string> sources, Action<string> onProcessed)
-void Decrypt(IEnumerable<string> sources, Action<string> onProcessed)
+int Encrypt(IEnumerable<string> sources, Action<string> onProcessed)
+int Decrypt(IEnumerable<string> sources, Action<string> onProcessed)
 ```
 
 These functions cover the main work to do. The file/folder names given on the command line are passed in as `sources`. And the name of each file processed is pushed to the continuation `onProcessed`.
 
-Displaying the names of the processed files and counting them should be easy "to wrap around".
+Displaying the names of the processed files should be easy "to wrap around". The number of files processed is returned as the result of executing these "commands".
+
+![](images/message handling.png)
+
 
 
