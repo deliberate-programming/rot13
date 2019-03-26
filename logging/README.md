@@ -13,4 +13,21 @@ A simple mapping algorithm: a source character is mapped to/replaced by another 
 
 (from [Wikipedia](https://en.wikipedia.org/wiki/ROT13))
 
-Encryption maps a character from Input to 
+Both encryption and decryption map an *input* character to an *output* character in the above table. Example:
+
+```
+a.txt: Hello!
+
+H->U
+e->r
+l->y
+o->b
+
+a.txt.encrypted: Uryyb!
+
+U -> H
+r -> e
+y -> l
+b -> o
+```
+
