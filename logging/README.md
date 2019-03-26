@@ -40,7 +40,12 @@ A much as possible should be tested automatically. Sample files are provided. Th
 
 ![](images/samples2.png)
 
-Function to test:
+Functions to test:
+
+```
+void Encrypt(IEnumerable<string> sources, Action<string> onProcessed)
+void Decrypt(IEnumerable<string> sources, Action<string> onProcessed)
+```
 
 
 
