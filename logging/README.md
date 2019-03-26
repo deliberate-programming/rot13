@@ -47,6 +47,8 @@ void Encrypt(IEnumerable<string> sources, Action<string> onProcessed)
 void Decrypt(IEnumerable<string> sources, Action<string> onProcessed)
 ```
 
+These functions cover the main work to do. The file/folder names given on the command line are passed in as `sources`. And the name of each file processed is pushed to the continuation `onProcessed`.
 
+Displaying the names of the processed files and counting them should be easy "to wrap around".
 
 
