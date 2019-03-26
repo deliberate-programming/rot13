@@ -11,3 +11,6 @@ A simple mapping algorithm: a source character is mapped to/replaced by another 
 
 ![](images/rot13.png)
 
+(from [Wikipedia](https://en.wikipedia.org/wiki/ROT13))
+
+Encryption maps a character from Input to 
