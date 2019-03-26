@@ -32,3 +32,16 @@ b -> o
 ```
 
 Characters not found in the map are not en/decrypted, e.g. `CR`, `LF`, `TAB`, special characters like `.`, `!`. That means the basic structure of a source file is retained.
+
+### Acceptance test
+A much as possible should be tested automatically. Sample files are provided. They can be used as sources and gold masters for an acceptance test.
+
+![](images/samples.png)
+
+![](images/samples2.png)
+
+Function to test:
+
+
+
+
