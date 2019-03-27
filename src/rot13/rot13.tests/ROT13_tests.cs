@@ -7,10 +7,11 @@ namespace rot13.tests
         [Theory]
         [InlineData("Hello!", "Uryyb!")]
         [InlineData("", "")]
-        [InlineData("A\nB\rC\tD E", "N\nO\rP\tD E")]
-        public void Encrypt()
+        [InlineData("A\nB\rC\tD E", "N\nO\rP\tQ R")]
+        public void Encrypt(string text, string expected)
         {
-            
+            var result = ROT13.EncryptDecrypt(text);
+            Assert.Equal(expected, result);
         }
     }
 }

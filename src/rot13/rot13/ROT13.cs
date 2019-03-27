@@ -4,9 +4,13 @@ namespace rot13
 {
     internal class ROT13
     {
-        public string EncryptDecrypt(string text)
+        // Source: https://en.wikipedia.org/wiki/ROT13
+        private const string INPUT = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        
+        
+        public static string EncryptDecrypt(string text)
         {
-            throw new NotImplementedException();
+            return text;
         }
     }
 }
