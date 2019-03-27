@@ -16,7 +16,7 @@ namespace rot13.tests
         static void CopyFiles(string sourcePath, string destinationPath)
         {
             if (Directory.Exists(destinationPath))
-                Directory.Delete(destinationPath);
+                Directory.Delete(destinationPath, true);
             
             var filenames = Directory.GetFiles(sourcePath, "*.*", SearchOption.AllDirectories);
             foreach (var fn in filenames) {
