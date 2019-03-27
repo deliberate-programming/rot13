@@ -1,3 +1,4 @@
+using rot13.domain;
 using Xunit;
 
 namespace rot13.tests

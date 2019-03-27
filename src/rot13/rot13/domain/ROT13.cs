@@ -1,7 +1,6 @@
-using System;
 using System.Linq;
 
-namespace rot13
+namespace rot13.domain
 {
     internal class ROT13
     {

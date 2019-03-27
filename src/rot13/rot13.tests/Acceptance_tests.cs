@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using rot13.adapters;
+using rot13.integration;
 using Xunit;
 
 namespace rot13.tests

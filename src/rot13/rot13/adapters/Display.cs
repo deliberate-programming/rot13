@@ -1,6 +1,6 @@
 using System;
 
-namespace rot13
+namespace rot13.adapters
 {
     internal class Display
     {

@@ -1,6 +1,7 @@
 using System;
+using rot13.adapters;
 
-namespace rot13
+namespace rot13.integration
 {
     class App
     {

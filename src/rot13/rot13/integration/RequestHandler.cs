@@ -1,8 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using rot13.adapters;
+using rot13.domain;
 
-namespace rot13
+namespace rot13.integration
 {
     internal class RequestHandler
     {

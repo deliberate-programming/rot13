@@ -1,4 +1,7 @@
-﻿namespace rot13
+﻿using rot13.adapters;
+using rot13.integration;
+
+namespace rot13
 {
     internal class Program
     {

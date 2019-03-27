@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace rot13
+namespace rot13.adapters
 {
     internal class Config
     {
