@@ -20,7 +20,7 @@ namespace rot13
         }
 
 
-        (Commands Command, IEnumerable<string> Sources) Parse() {
+        public (Commands Command, IEnumerable<string> Sources) Parse() {
             return (ParseCommand(), ParseSources());
 
             Commands ParseCommand() {
@@ -28,7 +28,7 @@ namespace rot13
                     case "encrypt":
                     case "e":
                         return Commands.Encrypt;
-                    case "dencrypt":
+                    case "decrypt":
                     case "d":
                         return Commands.Decrypt;
                 }
