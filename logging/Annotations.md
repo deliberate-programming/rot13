@@ -117,7 +117,8 @@ I set up the Config adapter. Also quite easy. I decide to return an enum from `P
 
 In 20a6d72/bbca863 I decide to introduce an `App` class for addition integration. (Forgot that during design.)
 
+The App makes the whole program runnable. It actually works :-)
+
 #### de331ba, 918cba1
 Finally some refactoring/clean-up.
-
 
