@@ -31,11 +31,17 @@ namespace rot13
         public string LoadText(string filename) => File.ReadAllText(filename);
 
         
-        public void  Store(string filename, string text)
-        {
-            // store
-            // delete original
-            throw new NotImplementedException();
+        public void ReplaceOriginalWithProcessed(string originalFilename, string text) {
+            var destinationFilename = originalFilename;
+            if (destinationFilename.ToLower().EndsWith(".encrypted"))
+                destinationFilename = Path.GetFileNameWithoutExtension(destinationFilename);
+            else
+                destinationFilename += ".encrypted";
+            
+            File.WriteAllText(destinationFilename, text);
+            
+            if (File.Exists(originalFilename))
+                File.Delete(originalFilename);
         }
     }
 }
