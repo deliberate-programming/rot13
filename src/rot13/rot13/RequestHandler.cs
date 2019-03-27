@@ -14,17 +14,4 @@ namespace rot13
             return 0;
         }
     }
-
-    internal class FilesystemProvider
-    {
-        
-    }
-
-    internal class ROT13
-    {
-        public string EncryptDecrypt(string text)
-        {
-            throw new NotImplementedException();
-        }
-    }
 }
