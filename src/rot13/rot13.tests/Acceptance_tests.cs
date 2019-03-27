@@ -10,11 +10,18 @@ namespace rot13.tests
         [Fact]
         public void Encrypt()
         {
-            CopyFiles("samples/unencrypted", "testencrypt");
-            var filesProcessed = new List<string>();
+            CopyFiles("../../samples/unencrypted", "testencrypt");
+            
             var sut = new RequestHandler();
-            sut.OnFileProcessed += filename => filesProcessed.Add(filename);
+            var filesProcessed = new List<string>();
+            sut.OnFileProcessed += filename => filesProcessed.Add(Path.GetFileName(filename));
+
             var result = sut.Encrypt(new[] {"testencrypt"});
+            
+            Assert.Equal(result, 3);
+            
+            filesProcessed.Sort();
+            Assert.Equal(new[]{"humptydumpty.txt", "marys lamb.txt", "onering.md"}, filesProcessed);
         }
 
 
