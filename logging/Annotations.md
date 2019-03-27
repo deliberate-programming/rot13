@@ -101,7 +101,7 @@ Implementing the `FileSystemProvider`. I go for an implementation w/o test. It a
 
 The signatures are there from the design.
 
-In 7b5aa7d I finally decide to deviate from the design: I merge storing and deleting of files into a replace operation: `ReplaceOriginalWithProcessed`. That way deleting the original file (the unencrypted one) is structurally not optional anymore. It also makes the FileSystemProvider truely specific to the solution: it keeps the file system in a consistent state. There always is just one file: unencrypted or encrypted. Sounds like a persistent ADT to me.
+In [7b5aa7d](https://github.com/deliberate-programming/rot13/commit/7b5aa7d0e59e79f9d30f8b2b84fb320331934aed) I finally decide to deviate from the design: I merge storing and deleting of files into a replace operation: `ReplaceOriginalWithProcessed`. That way deleting the original file (the unencrypted one) is structurally not optional anymore. It also makes the FileSystemProvider truely specific to the solution: it keeps the file system in a consistent state. There always is just one file: unencrypted or encrypted. Sounds like a persistent ADT to me.
 
 #### [4c4efa6](https://github.com/deliberate-programming/rot13/commit/4c4efa6dd246f34adb1bbf7ae6ce4c7a2830a838), [9bb0d97](https://github.com/deliberate-programming/rot13/commit/9bb0d974b184c29b3f60de107dd2f5169ee5b99a)
 My feeling is right: the FileSystemProvider is so simple, I get it right the first time.
@@ -116,7 +116,7 @@ I set up the Display adapter. Very easy.
 
 I set up the Config adapter. Also quite easy. I decide to return an enum from `Parse` to tell the command specified on the command line (instead of using an event). Using tuples that easy.
 
-In 20a6d72/bbca863 I decide to introduce an `App` class for addition integration. (Forgot that during design.)
+In [20a6d72](https://github.com/deliberate-programming/rot13/commit/20a6d72b64bb468d4aadec72f1d844a4ec200658)/[bbca863](https://github.com/deliberate-programming/rot13/commit/bbca8637b40d4b6a56986033ea0af10955362e41) I decide to introduce an `App` class for addition integration. (Forgot that during design.)
 
 The App makes the whole program runnable. It actually works :-)
 
