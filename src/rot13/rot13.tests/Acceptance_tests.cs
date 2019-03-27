@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Xunit;
 
 namespace rot13.tests
@@ -22,6 +23,10 @@ namespace rot13.tests
             
             filesProcessed.Sort();
             Assert.Equal(new[]{"humptydumpty.txt", "marys lamb.txt", "onering.md"}, filesProcessed);
+
+            var encryptedFilenames = Directory.GetFiles("testencrypt", "*.*", SearchOption.AllDirectories);
+            Assert.Equal(3, encryptedFilenames.Length);
+            Assert.True(encryptedFilenames.All(fn => fn.EndsWith(".encrypted")));
         }
 
 
