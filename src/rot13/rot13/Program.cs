@@ -26,11 +26,20 @@ namespace rot13
             _config = config;
             _requestHandler = requestHandler;
             _display = display;
+
+            _requestHandler.OnFileProcessed += _display.LogFileProcessed;
         }
 
-        public void Run()
-        {
-            var command = _config.
+        public void Run() {
+            var command = _config.Parse();
+            switch (command.Command) {
+                case Config.Commands.Encrypt:
+                    var n = _requestHandler.Encrypt(command.Sources);
+                    _display.LogNumberOfFilesProcessed(n);
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
         }
     }
 }

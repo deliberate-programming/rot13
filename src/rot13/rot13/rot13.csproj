@@ -46,6 +46,18 @@
     <Compile Include="RequestHandler.cs" />
     <Compile Include="ROT13.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\sample\encrypted\humptydumpty.txt.encrypted" />
+    <Content Include="..\..\..\sample\encrypted\markdown\onering.md.encrypted" />
+    <Content Include="..\..\..\sample\encrypted\marys lamb.txt.encrypted" />
+    <Content Include="..\..\..\sample\unencrypted\humptydumpty.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\sample\unencrypted\markdown\onering.md" />
+    <Content Include="..\..\..\sample\unencrypted\marys lamb.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
