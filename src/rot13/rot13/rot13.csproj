@@ -47,14 +47,16 @@
     <Compile Include="ROT13.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\sample\encrypted\humptydumpty.txt.encrypted" />
-    <Content Include="..\..\..\sample\encrypted\markdown\onering.md.encrypted" />
-    <Content Include="..\..\..\sample\encrypted\marys lamb.txt.encrypted" />
-    <Content Include="..\..\..\sample\unencrypted\humptydumpty.txt">
+    <Folder Include="samples" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="samples\unencrypted\humptydumpty.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\sample\unencrypted\markdown\onering.md" />
-    <Content Include="..\..\..\sample\unencrypted\marys lamb.txt">
+    <Content Include="samples\unencrypted\markdown\onering.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\unencrypted\marys lamb.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
