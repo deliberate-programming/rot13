@@ -51,7 +51,7 @@ These functions cover the main work to do. The file/folder names given on the co
 
 Displaying the names of the processed files should be easy "to wrap around". The number of files processed is returned as the result of executing these "commands".
 
-![](images/message handling.png)
+![](images/message_handling.png)
 
 ## Design
 ### Increment 1: Encrypt (ca. 20min)
