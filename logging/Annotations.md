@@ -62,3 +62,62 @@ Counting at the end in the ∑ step seems to be ok. It's so easy.
 A lot of work is done in the `FileSystemProvider`. But that's easy, I guess. Good abstractions provided by the .NET Fx.
 
 The core domain logic is nicely sitting in just one functional unit. That will be easy to test.
+
+## Implementation
+### Increment 1: Encrypt
+##### 2747bb4, 02c6b55
+Setting up test project and acceptance test skeleton.
+
+#### 573091b
+Setting up test data. I copy them from the requirements.
+
+#### 22ccb1c .. dd2ee4b (4)
+Create a utility function to copy a whole folder tree as test data.
+
+I run into a misunderstanding with `File.Copy`: I think it creates directories if any are given in a filename.
+
+Not true, so I have to create the folders myself. Getting the loop right takes a little longer than expected.
+
+#### 73a7899 .. 833d1a6 (4)
+Fleshing out the acceptance test.
+
+This is straightforward.
+
+I decide to check for checking only filenames reported as processed (not whole paths) to make the assert easier.
+
+#### f9e5492 .. b0582a2 (3)
+Setting up a test for ROT13. I decide to go straight for the domain logic. That should be simple - and fun. (I kind of shy away from dealing with resources.)
+
+A list a couple of test cases for whole strings to encrypt.
+
+#### c844cb4 .. 6578b84
+Implementing the ROT13 algo is simple (with a little bit of help from Wikipedia for the char map).
+
+Since encryption maps Input -> Output I call the function `EncryptDecrypt`. I don't expect to touch any again in a future increment to decrypt data.
+
+#### deaf838 .. b0a0859 (6)
+Implementing the `FileSystemProvider`. I go for an implementation w/o test. It all seems very easy. Some methods are just mapping to a .NET Fx function.
+
+The signatures are there from the design.
+
+In 7b5aa7d I finally decide to deviate from the design: I merge storing and deleting of files into a replace operation: `ReplaceOriginalWithProcessed`. That way deleting the original file (the unencrypted one) is structurally not optional anymore. It also makes the FileSystemProvider truely specific to the solution: it keeps the file system in a consistent state. There always is just one file: unencrypted or encrypted. Sounds like a persistent ADT to me.
+
+#### 4c4efa6, 9bb0d97
+My feeling is right: the FileSystemProvider is so simple, I get it right the first time.
+
+After filling it and ROT13 into the RequestHandler the acceptance test goes green!
+
+#### 8135808
+However I realize that the acceptance test has a flaw: it does not check if encryption results in only .encrypted files. I amend the test.
+
+#### 4b7033e .. bbca863 (5)
+I set up the Display adapter. Very easy.
+
+I set up the Config adapter. Also quite easy. I decide to return an enum from `Parse` to tell the command specified on the command line (instead of using an event). Using tuples that easy.
+
+In 20a6d72/bbca863 I decide to introduce an `App` class for addition integration. (Forgot that during design.)
+
+#### de331ba, 918cba1
+Finally some refactoring/clean-up.
+
+
