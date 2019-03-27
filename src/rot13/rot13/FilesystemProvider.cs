@@ -10,7 +10,17 @@ namespace rot13
         public IEnumerable<string> EnumerateSourcefile(IEnumerable<string> sources)
         {
             var allFilenames = EnumerateAllFiles(sources);
-            return 
+            return SelectRelevantFiles(allFilenames);
+        }
+
+        private IEnumerable<string> SelectRelevantFiles(IEnumerable<string> filenames)
+        {
+            throw new NotImplementedException();
+        }
+
+        private IEnumerable<string> EnumerateAllFiles(IEnumerable<string> sources)
+        {
+            throw new NotImplementedException();
         }
 
         public string LoadText(string filename) => File.ReadAllText(filename);
