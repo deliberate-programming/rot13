@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Xunit;
 
@@ -10,6 +11,10 @@ namespace rot13.tests
         public void Encrypt()
         {
             CopyFiles("samples/unencrypted", "testencrypt");
+            var filesProcessed = new List<string>();
+            var sut = new RequestHandler();
+            sut.OnFileProcessed += filename => filesProcessed.Add(filename);
+            var result = sut.Encrypt(new[] {"testencrypt"});
         }
 
 
