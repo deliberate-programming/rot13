@@ -20,7 +20,7 @@ namespace rot13.tests
             
             Assert.Equal(result, 3);
             
-            filesProcessed.Sort(); 
+            filesProcessed.Sort();
             Assert.Equal(new[]{"humptydumpty.txt", "marys lamb.txt", "onering.md"}, filesProcessed);
         }
 
