@@ -60,6 +60,18 @@
       <Name>rot13</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="samples\.DS_Store" />
+    <Content Include="samples\unencrypted\humptydumpty.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\unencrypted\markdown\onering.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="samples\unencrypted\marys lamb.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
