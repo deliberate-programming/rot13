@@ -27,9 +27,11 @@ namespace rot13
             return n;
         }
 
-        private void EncryptFile(string fn)
-        {
-            throw new NotImplementedException();
+        private void EncryptFile(string fn) {
+            var text = _filesystem.LoadText(fn);
+            var encryptedText = ROT13.EncryptDecrypt(text);
+            _filesystem.ReplaceOriginalWithProcessed(fn, encryptedText);
+            this.OnFileProcessed(fn);
         }
 
 

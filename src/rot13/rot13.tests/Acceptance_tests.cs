@@ -12,7 +12,7 @@ namespace rot13.tests
         {
             CopyFiles("../../samples/unencrypted", "testencrypt");
             
-            var sut = new RequestHandler();
+            var sut = new RequestHandler(new FilesystemProvider());
             var filesProcessed = new List<string>();
             sut.OnFileProcessed += filename => filesProcessed.Add(Path.GetFileName(filename));
 
