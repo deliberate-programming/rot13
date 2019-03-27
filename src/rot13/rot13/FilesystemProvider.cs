@@ -32,13 +32,13 @@ namespace rot13
 
         
         public void ReplaceOriginalWithProcessed(string originalFilename, string text) {
-            var destinationFilename = originalFilename;
-            if (destinationFilename.ToLower().EndsWith(".encrypted"))
-                destinationFilename = Path.GetFileNameWithoutExtension(destinationFilename);
+            var processedFilename = originalFilename;
+            if (processedFilename.ToLower().EndsWith(".encrypted"))
+                processedFilename = Path.GetFileNameWithoutExtension(processedFilename);
             else
-                destinationFilename += ".encrypted";
+                processedFilename += ".encrypted";
             
-            File.WriteAllText(destinationFilename, text);
+            File.WriteAllText(processedFilename, text);
             
             if (File.Exists(originalFilename))
                 File.Delete(originalFilename);

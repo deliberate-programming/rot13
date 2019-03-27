@@ -6,12 +6,20 @@ namespace rot13
 {
     internal class RequestHandler
     {
-        public event Action<string> OnFileProcessed;
+        private readonly FilesystemProvider _filesystem;
+
+        public RequestHandler(FilesystemProvider filesystem) {
+            _filesystem = filesystem;
+        }
         
         
         public int Encrypt(IEnumerable<string> sources)
         {
-            return 0;
+            var filenames = _filesystem.EnumerateSourcefile(sources);
+            
         }
+        
+        
+        public event Action<string> OnFileProcessed;
     }
 }
