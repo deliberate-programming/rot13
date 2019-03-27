@@ -1,5 +1,5 @@
 # ROT13 Encryptor
-## Analysis
+## Analysis (ca. 30min)
 A program needs to be written. A console application.
 
 ![](images/system-context.png)
@@ -54,7 +54,7 @@ Displaying the names of the processed files should be easy "to wrap around". The
 ![](images/message handling.png)
 
 ## Design
-### Increment 1: Encrypt
+### Increment 1: Encrypt (ca. 20min)
 ![](images/design encrypt.png)
 
 
