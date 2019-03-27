@@ -20,10 +20,8 @@ namespace rot13.tests
             
             var filenames = Directory.GetFiles(sourcePath, "*.*", SearchOption.AllDirectories);
             foreach (var fn in filenames) {
-                var destinationDirectory
-                Directory.CreateDirectory(Path.GetFullPath())
-                
                 var destFilename = fn.Replace(sourcePath, destinationPath);
+                Directory.CreateDirectory(Path.GetDirectoryName(destFilename));
                 File.Copy(fn, destFilename, true);
             }
         }
