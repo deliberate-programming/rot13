@@ -55,7 +55,7 @@ Displaying the names of the processed files should be easy "to wrap around". The
 
 ## Design
 ### Increment 1: Encrypt (ca. 20min)
-![](images/design encrypt.png)
+![](images/design_encrypt.png)
 
 ## Implementation
 ### Increment 1: Encrypt (ca. 75min)
