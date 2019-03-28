@@ -28,7 +28,7 @@ namespace rot13.adapters
 
             IEnumerable<string> Normalize(IEnumerable<string> extensions)
                 => extensions.Select(x => x.StartsWith(".") ? x.Substring(1) : x)
-                              .Select(x => x.ToLower());
+                             .Select(x => x.ToLower());
         }
 
 
