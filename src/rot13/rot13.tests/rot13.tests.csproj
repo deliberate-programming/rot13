@@ -64,6 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="samples\.DS_Store" />
+    <Content Include="samples\encrypted\humptydumpty.txt.encrypted" />
+    <Content Include="samples\encrypted\markdown\onering.md.encrypted" />
+    <Content Include="samples\encrypted\marys lamb.txt.encrypted" />
     <Content Include="samples\unencrypted\humptydumpty.txt" />
     <Content Include="samples\unencrypted\markdown\onering.md" />
     <Content Include="samples\unencrypted\marys lamb.txt" />
