@@ -195,6 +195,9 @@ The name of the file to store the en/decrypted text in needs to be explicitly bu
 #### [fcd](https://github.com/deliberate-programming/rot13/commit/fcd04db2928105ef2ab254b7009aa0d9b44c2e00)
 Fixing the acceptance test for decrypt.
 
+#### [9ed](https://github.com/deliberate-programming/rot13/commit/9edea3eefd01f4d4dcca5a46a7d6f1eb6cd10030), [1b1](https://github.com/deliberate-programming/rot13/commit/1b18029ad676e6ae410402e99ac8442f38ed4bc8)
+Made decryption available from the command line.
+
 
 
 
