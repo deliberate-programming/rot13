@@ -6,7 +6,7 @@ namespace rot13.adapters
 {
     internal class FilesystemProvider
     {
-        public IEnumerable<string> EnumerateSourcefile(IEnumerable<string> sources) {
+        public IEnumerable<string> EnumerateSourcefiles(IEnumerable<string> sources) {
             var allFilenames = EnumerateAllFiles(sources);
             return SelectRelevantFiles(allFilenames);
         }

@@ -15,20 +15,26 @@ namespace rot13.integration
         
         
         public int Encrypt(IEnumerable<string> sources) {
-            var filenames = _filesystem.EnumerateSourcefile(sources);
-            return EncryptFiles(filenames);
+            var filenames = _filesystem.EnumerateSourcefiles(sources, new[]{".txt", ".md"});
+            return EncryptDecryptFiles(filenames);
         }
+        
+        public int Decrypt(IEnumerable<string> sources) {
+            var filenames = _filesystem.EnumerateSourcefiles(sources, new[]{".encrypted"});
+            return EncryptDecryptFiles(filenames);
+        }
+        
 
-        private int EncryptFiles(IEnumerable<string> filenames) {
+        private int EncryptDecryptFiles(IEnumerable<string> filenames) {
             var n = 0;
             foreach (var fn in filenames) {
-                EncryptFile(fn);
+                EncryptDecryptFile(fn);
                 n++;
             }
             return n;
         }
 
-        private void EncryptFile(string fn) {
+        private void EncryptDecryptFile(string fn) {
             var text = _filesystem.LoadText(fn);
             var encryptedText = ROT13.EncryptDecrypt(text);
             _filesystem.ReplaceOriginalWithProcessed(fn, encryptedText);
