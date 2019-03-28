@@ -1,3 +1,4 @@
+using System.IO;
 using System.Linq;
 using rot13.adapters;
 using Xunit;
@@ -22,6 +23,21 @@ namespace rot13.tests
         {
             var result = FilesystemProvider.SelectRelevantFiles(new[] {"a.md", "b.txt"}, new[] {"TXT"});
             Assert.Equal(new[]{"b.txt"}, result.ToArray());
+        }
+
+
+        [Fact]
+        public void ReplaceTxtWithEncrypted()
+        {
+            var sourceFilename = "u.txt";
+            File.WriteAllText(sourceFilename, "unencrypted");
+            
+            var sut = new FilesystemProvider();
+            
+            sut.ReplaceOriginalWithProcessed(sourceFilename, "encrypted");
+            
+            Assert.Equal("encrypted", File.ReadAllText(sourceFilename + ".encrypted"));
+            Assert.False(File.Exists(sourceFilename));
         }
     }
 }
