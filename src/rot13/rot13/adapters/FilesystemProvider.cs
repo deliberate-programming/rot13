@@ -38,7 +38,8 @@ namespace rot13.adapters
         public void ReplaceOriginalWithProcessed(string originalFilename, string text) {
             var processedFilename = originalFilename;
             if (processedFilename.ToLower().EndsWith(".encrypted"))
-                processedFilename = Path.GetFileNameWithoutExtension(processedFilename);
+                processedFilename = Path.Combine(Path.GetDirectoryName(processedFilename),
+                                    Path.GetFileNameWithoutExtension(processedFilename));
             else
                 processedFilename += ".encrypted";
             
