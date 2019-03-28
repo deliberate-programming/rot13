@@ -11,7 +11,7 @@ namespace rot13.adapters
             return SelectRelevantFiles(allFilenames, relevantExtensions);
         }
 
-        private IEnumerable<string> EnumerateAllFiles(IEnumerable<string> sources) {
+        private static IEnumerable<string> EnumerateAllFiles(IEnumerable<string> sources) {
             return sources.SelectMany(EnumerateSource);
 
             IEnumerable<string> EnumerateSource(string source) {
@@ -22,7 +22,7 @@ namespace rot13.adapters
 
         }
 
-        private IEnumerable<string> SelectRelevantFiles(IEnumerable<string> filenames, string[] relevantExtensions) {
+        internal static IEnumerable<string> SelectRelevantFiles(IEnumerable<string> filenames, string[] relevantExtensions) {
             var relevantExtensions_ = new HashSet<string>(relevantExtensions.Select(x => x.ToLower()));
             return filenames.Where(fn => relevantExtensions_.Contains(fn.ToLower()));
         }
