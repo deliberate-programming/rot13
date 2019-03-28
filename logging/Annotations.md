@@ -64,6 +64,19 @@ A lot of work is done in the `FileSystemProvider`. But that's easy, I guess. Goo
 
 The core domain logic is nicely sitting in just one functional unit. That will be easy to test.
 
+### Increment 2: Decrypt
+#### [ea5](https://github.com/deliberate-programming/rot13/commit/ea5b93e0e8b4d8f361bcb21bd338c8d82b7c49e0)
+I realize that decryption is like encryption. It just takes other files as input: encrypted files.
+
+This realization I first document textually. It seems easier to write it down.
+
+#### [f7b](https://github.com/deliberate-programming/rot13/commit/f7b343f84479e4bfb23a753833422a9a85e04dd3)
+Only then I visualize this equivalence. I focus the drawing on just the differences regarding increment 1.
+
+Mostly just the selection of the relevant files needs to be adapted by passing in the file extensions to focus on.
+
+Nevertheless on the top level I introduce a `Decrypt` function to the `RequestHandler`. I don't want to leak the symmetry to the outside. And I don't want to require a client to pass in some parameters to select between encryption and decryption. On the outside encryption and decryption are two different operations. All else is a detail.
+
 ## Implementation
 ### Increment 1: Encrypt
 ##### [2747bb4](https://github.com/deliberate-programming/rot13/commit/2747bb4bd37382f0c5b4a87b8099c3a9b36cd71d), [02c6b55](https://github.com/deliberate-programming/rot13/commit/02c6b55b32d9fa0f38a90d12929a414dacf3ea2a)
@@ -122,4 +135,67 @@ The App makes the whole program runnable. It actually works :-)
 
 #### [de331ba](https://github.com/deliberate-programming/rot13/commit/de331ba41447a2385e39b9c0929528c976854058), [918cba1](https://github.com/deliberate-programming/rot13/commit/918cba107f72d4b8fcff081d2729bbca6cb509fd)
 Finally some refactoring/clean-up.
+
+### Increment 2: Decrypt
+#### [160](https://github.com/deliberate-programming/rot13/commit/160d05236d1b4788a199c83ab3ba9fd79d823ab9), [3e4](https://github.com/deliberate-programming/rot13/commit/3e4791ce26e2c4a62b65f6d69a520b6ecb19278a)
+First I implement an acceptance test for decryption. It just looks slightly different at the end for checking the files expected to be created.
+
+The `CopyFiles` function is of great help here.
+
+#### [9e7](https://github.com/deliberate-programming/rot13/commit/9e74c34bb5c0f7130addba7392ead3f828883d9b), [28c](https://github.com/deliberate-programming/rot13/commit/28cc2fdfc8d224ab9099d0b2bee047bd28cc4315)
+I implement the changes necessary to `RequestHandler` and `FileSystemProvider`.
+
+In passing I change a couple of non-public function names to better document the symmetry between encryption and decryption.
+
+How to check the extensions in `SelectRelevantFiles` takes me a short, but noticable moment to decide:
+
+* Pass in the extensions with a dot (".txt") or without ("txt")?
+* Require them to be in lower case?
+* Where to use an array for that vs a `HashSet`?
+
+In the end I hide all these details in `SelectRelevantFiles` to burden its clients less.
+
+#### [a03](https://github.com/deliberate-programming/rot13/commit/a0a3a34d4adb5e4fd02f0e39019498e1e1b92d2d)
+After my changes to the `FileSystemProvider` I'm optimistic that decryption now works. But the acceptance test for encryption fails first.
+
+I don't want to go down a debugging rabbit hole so I set up addition tests to narrow down on the reason.
+
+####  [70e](https://github.com/deliberate-programming/rot13/commit/70e30cb7490afbaa614c1eea51b0b94e1e46d944)
+First I single out source file enumeration. It fails.
+
+#### [51e](https://github.com/deliberate-programming/rot13/commit/51e644501f98472a5cc715d00b056df04fa3b153)
+I sense something is wrong with `SelectRelevantFiles` so I devise a scaffolding test for it.
+
+In passing I set some methods to `static`. There is not state involved and they become easier to test.
+
+#### [5fe](https://github.com/deliberate-programming/rot13/commit/5fe6b5b0b4d8afc8e506c78c1ca7558eb5a7910d)
+The obvious error is that I'm checking the whole filename against relevant extensions. I need to extract just the extension from it.
+
+Now finally I extract the details of how extensions are needed for comparion to its own function: `Normalize`. A local functionn is sufficient for that.
+
+#### [fd1](https://github.com/deliberate-programming/rot13/commit/fd19b9d7bde3b8f9f1dfe50c485e4dcf7e75b78e), [6ad](https://github.com/deliberate-programming/rot13/commit/6ad3e2b21b12eca3c98499a909b09e91cf6d87b0) 
+Yet more testing is needed. Something is still wrong.
+
+#### [4b1](https://github.com/deliberate-programming/rot13/commit/4b1169dd1131615f75658d46da12bd21cec421ce)
+Only after a while I realize I don't use `Path.GetExtension` correctly. It returns the extension with a leading dot - and I thought it was stripping it.
+
+#### [a74](https://github.com/deliberate-programming/rot13/commit/a74e80e78b0592d6da234aec9c6a60b033712be3)
+Still the acceptance test fails. I wrongly assumed the encrypted file samples were already at the place where I expected them, in the test project.
+
+#### [931](https://github.com/deliberate-programming/rot13/commit/931ea5625fd9b5581326249e529e2205b2ae4f2a), [c52](https://github.com/deliberate-programming/rot13/commit/c52ffdf9e22e1d44206f07a416c694f393f66577)
+Still, the decryption acceptance test fails. No files are generated, it seems.
+
+The reason lies with `ReplaceTxtWithEncrypted` I suspect. Maybe the files get generated but then are wrongly deleted. I set up tests for the function.
+
+#### [7a0](https://github.com/deliberate-programming/rot13/commit/7a098992e96dc5088f97b5136502909d488b93b8)
+It turns out the function was incorrect all along. I just did not realize it incidentally during the acceptance test for encryption. The test did not check the full filenames reported.
+
+The name of the file to store the en/decrypted text in needs to be explicitly built from the path of the source filename and its filename without the *.encrypted* extension.
+
+#### [fcd](https://github.com/deliberate-programming/rot13/commit/fcd04db2928105ef2ab254b7009aa0d9b44c2e00)
+Fixing the acceptance test for decrypt.
+
+
+
+
 

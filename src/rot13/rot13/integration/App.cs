@@ -19,14 +19,16 @@ namespace rot13.integration
 
         public void Run() {
             var command = _config.Parse();
+            int n;
             switch (command.Command) {
                 case Config.Commands.Encrypt:
-                    var n = _requestHandler.Encrypt(command.Sources);
-                    _display.LogNumberOfFilesProcessed(n);
+                    n = _requestHandler.Encrypt(command.Sources);
                     break;
-                default:
-                    throw new NotImplementedException();
+                case Config.Commands.Decrypt:
+                    n = _requestHandler.Decrypt(command.Sources);
+                    break;
             }
+            _display.LogNumberOfFilesProcessed(n);
         }
     }
 }
