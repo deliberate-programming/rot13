@@ -27,7 +27,7 @@ namespace rot13.adapters
             return filenames.Where(fn => relevantExtensions_.Contains(Path.GetExtension(fn).ToLower()));
 
             IEnumerable<string> Normalize(IEnumerable<string> extensions)
-                => extensions.Select(x => x.StartsWith(".") ? x.Substring(1) : x)
+                => extensions.Select(x => x.StartsWith(".") ? x : "." + x)
                              .Select(x => x.ToLower());
         }
 

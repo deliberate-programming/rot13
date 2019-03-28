@@ -20,7 +20,7 @@ namespace rot13.tests
         [Fact]
         public void __SelectRelevantFiles()
         {
-            var result = FilesystemProvider.SelectRelevantFiles(new[] {"a.md", "b.txt"}, new[] {".TXT"});
+            var result = FilesystemProvider.SelectRelevantFiles(new[] {"a.md", "b.txt"}, new[] {"TXT"});
             Assert.Equal(new[]{"b.txt"}, result.ToArray());
         }
     }
