@@ -39,5 +39,19 @@ namespace rot13.tests
             Assert.Equal("encrypted", File.ReadAllText(sourceFilename + ".encrypted"));
             Assert.False(File.Exists(sourceFilename));
         }
+        
+        [Fact]
+        public void ReplaceEncryptedWithTxt()
+        {
+            var sourceFilename = "e.txt.encrypted";
+            File.WriteAllText(sourceFilename, "encrypted");
+            
+            var sut = new FilesystemProvider();
+            
+            sut.ReplaceOriginalWithProcessed(sourceFilename, "unencrypted");
+            
+            Assert.Equal("unencrypted", File.ReadAllText(Path.GetFileNameWithoutExtension(sourceFilename)));
+            Assert.False(File.Exists(sourceFilename));
+        }
     }
 }
