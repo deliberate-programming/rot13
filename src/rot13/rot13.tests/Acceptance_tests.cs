@@ -21,7 +21,7 @@ namespace rot13.tests
 
             var result = sut.Encrypt(new[] {"testencrypt"});
             
-            Assert.Equal(result, 3);
+            Assert.Equal(3, result);
             
             filesProcessed.Sort();
             Assert.Equal(new[]{"humptydumpty.txt", "marys lamb.txt", "onering.md"}, filesProcessed);
