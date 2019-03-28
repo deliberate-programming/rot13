@@ -23,8 +23,15 @@ namespace rot13.adapters
         }
 
         internal static IEnumerable<string> SelectRelevantFiles(IEnumerable<string> filenames, string[] relevantExtensions) {
-            var relevantExtensions_ = new HashSet<string>(relevantExtensions.Select(x => x.ToLower()));
-            return filenames.Where(fn => relevantExtensions_.Contains(fn.ToLower()));
+            var relevantExtensions_ = new HashSet<string>(Normalize(relevantExtensions));
+            return filenames.Where(fn => relevantExtensions_.Contains(Path.GetExtension(fn).ToLower()));
+
+            IEnumerable<string> Normalize(IEnumerable<string> extensions)
+                => relevantExtensions.Select(x =>
+                    {
+                        return x.StartsWith(".") ? x.Substring(1) : x;
+                    })
+                                      .Select(x => x.ToLower());
         }
 
 
