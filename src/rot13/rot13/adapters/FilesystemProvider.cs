@@ -6,9 +6,9 @@ namespace rot13.adapters
 {
     internal class FilesystemProvider
     {
-        public IEnumerable<string> EnumerateSourcefiles(IEnumerable<string> sources) {
+        public IEnumerable<string> EnumerateSourcefiles(IEnumerable<string> sources, string[] relevantExtensions) {
             var allFilenames = EnumerateAllFiles(sources);
-            return SelectRelevantFiles(allFilenames);
+            return SelectRelevantFiles(allFilenames, relevantExtensions);
         }
 
         private IEnumerable<string> EnumerateAllFiles(IEnumerable<string> sources) {
@@ -22,10 +22,12 @@ namespace rot13.adapters
 
         }
 
-        private IEnumerable<string> SelectRelevantFiles(IEnumerable<string> filenames)
-            => filenames.Where(fn => fn.ToLower().EndsWith(".txt") || fn.ToLower().EndsWith(".md"));
+        private IEnumerable<string> SelectRelevantFiles(IEnumerable<string> filenames, string[] relevantExtensions) {
+            var relevantExtensions_ = new HashSet<string>(relevantExtensions.Select(x => x.ToLower()));
+            return filenames.Where(fn => relevantExtensions_.Contains(fn.ToLower()));
+        }
 
-        
+
         public string LoadText(string filename) => File.ReadAllText(filename);
 
         

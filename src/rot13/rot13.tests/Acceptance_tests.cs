@@ -31,6 +31,7 @@ namespace rot13.tests
             Assert.True(encryptedFilenames.All(fn => fn.EndsWith(".encrypted")));
         }
         
+        
         [Fact]
         public void Decrypt()
         {
