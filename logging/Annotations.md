@@ -3,7 +3,7 @@
 ### Log
 #### Commit [8db7a8f](https://github.com/deliberate-programming/rot13/commit/8db7a8f5aed6d77587782824bbccb6d6a03c92e0)
 
-Created a solution for a console applicationn w/o much thinking. Seemed make the task more tangible.
+Created a solution for a console applicationn w/o much thinking. Seemed to make the task more tangible.
 
 #### [3f2ae9f](https://github.com/deliberate-programming/rot13/commit/3f2ae9f2f5190e1766032aada439ac3e04fead4d), [a7ab7f4](https://github.com/deliberate-programming/rot13/commit/a7ab7f4dd629fbf074c1f09b143650477255b78a)
 Started drawing pretty late. First tried to wrap my head around the problem by writing something. But it then felt more natural and easier to quickly draw "the situation".
@@ -14,7 +14,7 @@ I decided to "not play dumb". The exercise is not about "re-inventing" ROT13, bu
 #### [8a842ec](https://github.com/deliberate-programming/rot13/commit/8a842ec7f88c036309e3919b42db6f0fca344888)
 Even though it's easy to do I put an example of encrypting a text and then decrypting the encrypted text in the analysis. Just to be sure I understood the algorithm correctly.
 
-First I though encryption meant mapping Input to Output, and decryption meant mapping Output to Input. But for both en/decryption it's the same: Input -> Output.
+First I thought encryption meant mapping Input to Output, and decryption meant mapping Output to Input. But for both en/decryption it's the same: Input -> Output.
 
 #### [fbde3b5](https://github.com/deliberate-programming/rot13/commit/fbde3b504c6131773972b6e71f513b1b9cb76425)
 Non-map characters are not en/decrypted. Good to know. But it made me wonder about the value of this kind of encryption.
