@@ -47,9 +47,9 @@ namespace rot13.tests
             filesProcessed.Sort();
             Assert.Equal(new[]{"humptydumpty.txt.encrypted", "marys lamb.txt.encrypted", "onering.md.encrypted"}, filesProcessed);
 
-            var encryptedFilenames = Directory.GetFiles("testdecrypt", "*.*", SearchOption.AllDirectories);
-            Assert.Equal(3, encryptedFilenames.Length);
-            Assert.True(encryptedFilenames.All(fn => fn.EndsWith(".encrypted")));
+            var decryptedFilenames = Directory.GetFiles("testdecrypt", "*.*", SearchOption.AllDirectories).ToList();
+            decryptedFilenames.Sort();
+            Assert.Equal(new[]{"humptydumpty.txt", "marys lamb.txt", "onering.md"}, decryptedFilenames);
         }
 
 
