@@ -30,6 +30,27 @@ namespace rot13.tests
             Assert.Equal(3, encryptedFilenames.Length);
             Assert.True(encryptedFilenames.All(fn => fn.EndsWith(".encrypted")));
         }
+        
+        [Fact]
+        public void Decrypt()
+        {
+            CopyFiles("../../samples/encrypted", "testdecrypt");
+            
+            var sut = new RequestHandler(new FilesystemProvider());
+            var filesProcessed = new List<string>();
+            sut.OnFileProcessed += filename => filesProcessed.Add(Path.GetFileName(filename));
+
+            var result = sut.Decrypt(new[] {"testdecrypt"});
+            
+            Assert.Equal(result, 3);
+            
+            filesProcessed.Sort();
+            Assert.Equal(new[]{"humptydumpty.txt.encrypted", "marys lamb.txt.encrypted", "onering.md.encrypted"}, filesProcessed);
+
+            var encryptedFilenames = Directory.GetFiles("testdecrypt", "*.*", SearchOption.AllDirectories);
+            Assert.Equal(3, encryptedFilenames.Length);
+            Assert.True(encryptedFilenames.All(fn => fn.EndsWith(".encrypted")));
+        }
 
 
         static void CopyFiles(string sourcePath, string destinationPath)
