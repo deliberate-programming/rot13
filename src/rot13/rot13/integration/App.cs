@@ -19,7 +19,7 @@ namespace rot13.integration
 
         public void Run() {
             var command = _config.Parse();
-            int n;
+            int n = 0;
             switch (command.Command) {
                 case Config.Commands.Encrypt:
                     n = _requestHandler.Encrypt(command.Sources);
