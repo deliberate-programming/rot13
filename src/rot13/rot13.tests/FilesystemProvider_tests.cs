@@ -21,7 +21,7 @@ namespace rot13.tests
         public void __SelectRelevantFiles()
         {
             var result = FilesystemProvider.SelectRelevantFiles(new[] {"a.txt", "b.md"}, new[] {".TXT"});
-            Assert.Equal(new[]{"a.txt"}, result);
+            Assert.Equal(new[]{"a.txt"}, result.ToArray());
         }
     }
 }
